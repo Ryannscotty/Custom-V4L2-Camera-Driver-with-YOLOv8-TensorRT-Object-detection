@@ -1,0 +1,3 @@
+/home/rscott/Desktop/Obstacle Detection/build/CMakeFiles/ObstacleDetection.dir
+/home/rscott/Desktop/Obstacle Detection/build/CMakeFiles/edit_cache.dir
+/home/rscott/Desktop/Obstacle Detection/build/CMakeFiles/rebuild_cache.dir

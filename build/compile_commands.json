@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/ObstacleDetection.dir/src/main.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/src/main.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/src/main.cpp"
+},
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/ObstacleDetection.dir/drivers/C270Capture.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/drivers/C270Capture.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/drivers/C270Capture.cpp"
+}
+]
