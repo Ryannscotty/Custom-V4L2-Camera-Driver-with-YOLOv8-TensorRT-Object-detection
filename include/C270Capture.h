@@ -36,10 +36,13 @@ class C270CameraDriver
         }
         void openDevice(const char *Campath);
         void closeDevice(void);
+        void checkDeviceCapability(int CamFilePointer);
+        int Cam_IO_CTL(int CamFilePointer,unsigned long request, void *arg);
+    protected:
         static void errno_exit(const char *s)
         {
-        fprintf(stderr, "%s error %d, %s\n", s, errno, strerror(errno));
-        exit(EXIT_FAILURE);
+            fprintf(stderr, "%s error %d, %s\n", s, errno, strerror(errno));
+            exit(EXIT_FAILURE);
         }
         
 };

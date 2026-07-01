@@ -18,6 +18,8 @@ void Cam_test::test1(void)
 	C270CameraDriver C270Device;
 	C270Device.openDevice(C270_DEVICE);
 	std::this_thread::sleep_for(std::chrono::seconds(1));
+    C270Device.checkDeviceCapability(C270Device.CameraFD);
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 	C270Device.closeDevice();
 }
 
