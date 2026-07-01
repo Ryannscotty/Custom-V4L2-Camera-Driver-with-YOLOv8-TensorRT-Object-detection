@@ -14,7 +14,6 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release)
- 
 ########################################
 # Threads (pthreads)
 # Pulls in -pthread for std::thread and the affinity/priority pthread_* calls.
@@ -34,16 +33,19 @@ file(GLOB_RECURSE Driver_src CONFIGURE_DEPENDS
 # CONFIGURE_DEPENDS makes CMake re-glob at build time when files are added/removed.
 ########################################
 file(GLOB_RECURSE UnitTest_src CONFIGURE_DEPENDS
-  "${CMAKE_CURRENT_SOURCE_DIR}/UNIT_TEST/*.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/UnitTest/*.cpp"
 )
- 
+add_library(UNITTEST_subsystem STATIC ${UnitTest_src})
+target_include_directories(UNITTEST_subsystem PUBLIC 
+include
+)
 ########################################
 # Executable + its sources
 ########################################
 add_executable(${PROJECT_NAME}
   src/main.cpp
   ${Driver_src}
-#  ${UnitTest_src}
+  ${UnitTest_src}
 )
  
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -51,7 +53,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
  
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  Threads::Threads
+UNITTEST_subsystem
+Threads::Threads
 )
  
 

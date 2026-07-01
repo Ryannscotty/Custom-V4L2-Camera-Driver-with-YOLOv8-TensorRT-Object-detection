@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/ObstacleDetection.dir/src/main.cpp.o CMakeFiles/ObstacleDetection.dir/drivers/C270Capture.cpp.o CMakeFiles/ObstacleDetection.dir/UnitTest/Test_open_close_Cam.cpp.o -o ObstacleDetection  libUNITTEST_subsystem.a 

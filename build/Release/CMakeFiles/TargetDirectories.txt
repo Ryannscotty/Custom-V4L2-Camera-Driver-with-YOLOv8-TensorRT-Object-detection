@@ -1,0 +1,4 @@
+/home/rscott/Desktop/Obstacle Detection/build/Release/CMakeFiles/UNITTEST_subsystem.dir
+/home/rscott/Desktop/Obstacle Detection/build/Release/CMakeFiles/ObstacleDetection.dir
+/home/rscott/Desktop/Obstacle Detection/build/Release/CMakeFiles/edit_cache.dir
+/home/rscott/Desktop/Obstacle Detection/build/Release/CMakeFiles/rebuild_cache.dir

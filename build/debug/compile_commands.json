@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build/debug",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -g -std=gnu++17 -o CMakeFiles/UNITTEST_subsystem.dir/UnitTest/Test_open_close_Cam.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/UnitTest/Test_open_close_Cam.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/UnitTest/Test_open_close_Cam.cpp"
+},
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build/debug",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -g -std=gnu++17 -o CMakeFiles/ObstacleDetection.dir/src/main.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/src/main.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/src/main.cpp"
+},
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build/debug",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -g -std=gnu++17 -o CMakeFiles/ObstacleDetection.dir/drivers/C270Capture.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/drivers/C270Capture.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/drivers/C270Capture.cpp"
+},
+{
+  "directory": "/home/rscott/Desktop/Obstacle Detection/build/debug",
+  "command": "/usr/bin/c++  -I\"/home/rscott/Desktop/Obstacle Detection/include\" -g -std=gnu++17 -o CMakeFiles/ObstacleDetection.dir/UnitTest/Test_open_close_Cam.cpp.o -c \"/home/rscott/Desktop/Obstacle Detection/UnitTest/Test_open_close_Cam.cpp\"",
+  "file": "/home/rscott/Desktop/Obstacle Detection/UnitTest/Test_open_close_Cam.cpp"
+}
+]

@@ -11,7 +11,6 @@ void C270CameraDriver::openDevice(const char *Campath)
      if(stat(Campath,&CamfileStructure) == -1)
      {
         fprintf(stderr, "Cannot identify '%s': %d, %s\n", Campath, errno, strerror(errno));
-        std::cout << "Cannot find:  " << Campath << std::endl;
                 exit(EXIT_FAILURE);
      }
     /* check if the device is open/present */ 
@@ -29,6 +28,7 @@ void C270CameraDriver::openDevice(const char *Campath)
         fprintf(stderr, "Cannot open '%s': %d, %s\n", Campath, errno, strerror(errno));
         exit(EXIT_FAILURE);
    }
+    printf( "open device\n");
 }
 
 void C270CameraDriver::closeDevice(void)
@@ -39,6 +39,7 @@ void C270CameraDriver::closeDevice(void)
     }
 
     CameraFD = -1;
+    printf( "close device\n");
 }
 
 

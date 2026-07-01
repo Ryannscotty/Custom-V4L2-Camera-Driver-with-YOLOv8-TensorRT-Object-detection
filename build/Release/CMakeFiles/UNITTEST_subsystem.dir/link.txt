@@ -1,0 +1,2 @@
+/usr/bin/ar qc libUNITTEST_subsystem.a CMakeFiles/UNITTEST_subsystem.dir/UnitTest/Test_open_close_Cam.cpp.o
+/usr/bin/ranlib libUNITTEST_subsystem.a
