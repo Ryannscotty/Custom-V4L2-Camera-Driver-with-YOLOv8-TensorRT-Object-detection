@@ -1,5 +1,6 @@
 #include "C270Capture.h"
 #include <asm-generic/errno-base.h>
+#include <cerrno>
 #include <cstdio>
 #include <cstdlib>
 #include <fcntl.h>
@@ -64,11 +65,7 @@ int C270CameraDriver::Cam_IO_CTL(int CamFilePointer, unsigned long request, void
 void C270CameraDriver::checkDeviceCapability(int CamFilePointer)
 {
     struct v4l2_capability CameraCapability;
-    struct v4l2_cropcap CameraCropCapability;
-    struct v4l2_crop CameraCrop;
-    struct v4l2_format CameraFormat;
 
-    unsigned int minimun;
     /* check the camera capabilities: capture or stream or n/a */ 
     CLEAR(CameraCapability);
     if(Cam_IO_CTL(CamFilePointer,VIDIOC_QUERYCAP, &CameraCapability) == -1)
@@ -101,7 +98,73 @@ void C270CameraDriver::checkDeviceCapability(int CamFilePointer)
 
 }
 
+void C270CameraDriver::Set_Cam_Res_Format(int CamFilePointer)
+{
+    struct v4l2_cropcap CameracropCapability;
+    struct v4l2_crop Cameracrop;
+    struct v4l2_format CameraFormat;
+    unsigned int minimun;
+    int formattedwidth,formattedheight,formattedstride;
 
+    CLEAR(CameracropCapability);
+    CameracropCapability.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    if(Cam_IO_CTL(CamFilePointer, VIDIOC_CROPCAP, &CameracropCapability) == 0)
+    {
+        Cameracrop.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        Cameracrop.c = CameracropCapability.defrect;
+        
+        if(Cam_IO_CTL(CamFilePointer, VIDIOC_S_CROP, &Cameracrop) == -1)
+        {           
+            switch(errno)
+            {
+                case EINVAL:
+                    /* Cropping not supported. */
+                    fprintf(stderr,"Cropping not supported for %s\n", C270_DEVICE);
+                    break;
+                default:
+                    /* Errors ignored. */
+                    break;
+            }        
+        }
+    }
+
+    /*specify our resolution  640 X 480*/
+    CLEAR(CameraFormat);
+    CameraFormat.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    CameraFormat.fmt.pix.width = WIDTH;
+    CameraFormat.fmt.pix.height = HEIGHT;
+    CameraFormat.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;
+    CameraFormat.fmt.pix.field = V4L2_FIELD_NONE;
+
+    if(Cam_IO_CTL(CamFilePointer, VIDIOC_S_FMT, &CameraFormat) == -1)
+    {
+                            
+        fprintf(stderr, "VIDIOC_S_FMT failed: %d, %s\n", errno, strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+
+   /* keep frames in bounds*/ 
+    minimun = CameraFormat.fmt.pix.width * 2;
+
+    if(CameraFormat.fmt.pix.bytesperline < minimun)
+    {
+        CameraFormat.fmt.pix.bytesperline = minimun;
+    }
+    
+    minimun = CameraFormat.fmt.pix.bytesperline * CameraFormat.fmt.pix.height;
+
+    if(CameraFormat.fmt.pix.sizeimage < minimun)
+    {
+        CameraFormat.fmt.pix.sizeimage = minimun;
+    }
+
+    formattedheight = CameraFormat.fmt.pix.height;
+    formattedwidth = CameraFormat.fmt.pix.width;
+    formattedstride = CameraFormat.fmt.pix.bytesperline;
+
+    printf("Format : %dx%d YUYV, stride=%d, image=%u bytes\n"
+            ,formattedwidth,formattedheight,formattedstride,CameraFormat.fmt.pix.sizeimage);
+}
 
 
 

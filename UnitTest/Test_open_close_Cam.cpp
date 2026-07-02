@@ -20,6 +20,8 @@ void Cam_test::test1(void)
 	std::this_thread::sleep_for(std::chrono::seconds(1));
     C270Device.checkDeviceCapability(C270Device.CameraFD);
 	std::this_thread::sleep_for(std::chrono::seconds(1));
+    C270Device.Set_Cam_Res_Format(C270Device.CameraFD);
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 	C270Device.closeDevice();
 }
 

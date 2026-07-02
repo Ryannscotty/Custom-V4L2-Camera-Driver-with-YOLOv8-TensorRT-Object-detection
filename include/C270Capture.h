@@ -37,6 +37,7 @@ class C270CameraDriver
         void openDevice(const char *Campath);
         void closeDevice(void);
         void checkDeviceCapability(int CamFilePointer);
+        void Set_Cam_Res_Format(int CamFilePointer);
         int Cam_IO_CTL(int CamFilePointer,unsigned long request, void *arg);
     protected:
         static void errno_exit(const char *s)
